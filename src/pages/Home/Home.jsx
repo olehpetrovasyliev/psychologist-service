@@ -22,7 +22,13 @@ const Home = () => {
             </svg>
           </button>
         </div>
-        <div className="imageWrapper">
+        <div className={styles.imageWrapper}>
+          <img
+            src={heroImage}
+            alt="psychologist"
+            className={styles.heroImage}
+          />
+
           <div className={styles.decorQuestion}>
             <svg width={15} height={21}>
               <use href={svg + "#icon-question"}></use>
@@ -33,15 +39,20 @@ const Home = () => {
               <use href={svg + "#icon-people"}></use>
             </svg>
           </div>
-          <div className="decorMain">
+          <div className={styles.decorMain}>
             <div className={styles.checkedWrapper}>
               <svg width={30} height={30}>
                 <use href={svg + "#icon-checked"}></use>
               </svg>
             </div>
-            <span>Experienced psichologists</span> <span>15,000</span>
+            <div>
+              {" "}
+              <div className={styles.decorMainText}>
+                Experienced psichologists
+              </div>{" "}
+              <div className={styles.decorMainNumber}>15,000</div>
+            </div>
           </div>
-          <img src={heroImage} alt="psychologist" />
         </div>
       </div>
     </section>

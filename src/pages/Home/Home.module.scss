@@ -28,18 +28,23 @@
   justify-content: center;
 }
 
-// .heroImage {
-//   position: relative;
-// }
+.imageWrapper {
+  position: relative;
+  overflow: visible;
+}
 
-// .imageWrapper {
-//   position: relative;
+.decorMain {
+  background-color: #fc832c;
+  display: flex;
+  padding: 32px;
+  border-radius: 20px;
+  gap: 1rem;
+  width: 311px;
+  position: absolute;
 
-//   & div {
-//     position: absolute;
-//   }
-// }
-
+  top: 360px;
+  right: 240px;
+}
 .decorQuestion {
   background-color: #54be96;
   width: 40px;
@@ -48,6 +53,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  position: absolute;
+  rotate: -15deg;
+  top: 190px;
+  left: -20px;
 }
 
 .decorPeople {
@@ -58,11 +67,30 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  position: absolute;
+  rotate: 15deg;
+  top: 50px;
+  right: -26px;
 }
+
 .checkedWrapper {
+  background-color: #fbfbfb;
   width: 54px;
   height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+}
+
+.decorMainText {
+  color: #fbfbfb;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.decorMainNumber {
+  color: #fbfbfb;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
