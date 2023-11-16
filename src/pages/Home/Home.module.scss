@@ -1,0 +1,21 @@
+.heroWrapper {
+  display: flex;
+  gap: 125px;
+}
+
+.heroHeading {
+  font-size: 5rem;
+  line-height: 1.1;
+  max-width: 37.1875rem;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.heroText {
+  max-width: 510px;
+  font-size: 1.125rem;
+  margin-bottom: 40px;
+}
+.heroBtn {
+  display: flex;
+}
