@@ -33,14 +33,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 5rem;
-  line-height: 1.1;
-  max-width: 37.1875rem;
-  margin: 0;
-  margin-bottom: 20px;
-}
-
 button {
   border-radius: 30px;
   border: 1px solid transparent;
