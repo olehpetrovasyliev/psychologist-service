@@ -1,0 +1,98 @@
+.psychologist {
+  color: #8a8a89;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.name {
+  color: #191a15;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.numbers {
+  color: #191a15;
+  font-size: 1rem;
+  font-weight: 500;
+  & .price {
+    color: #38cd3e;
+  }
+}
+
+.numbersWrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.delimiter {
+  width: 1px;
+  height: 16px;
+  background-color: rgba(25, 26, 21, 0.2);
+}
+.ratingWraper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.characterisics {
+  color: #8a8a89;
+  font-size: 1rem;
+  font-weight: 500;
+  & span {
+    color: #191a15;
+  }
+}
+.characteristicsWrapper {
+  display: flex;
+  gap: 36px;
+}
+
+.about {
+  color: rgba(25, 26, 21, 0.5);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.pseudoAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  background: rgba(252, 131, 44, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fc832c;
+  font-size: 1.25rem;
+}
+
+.reviewRatingWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.reviewerDetails {
+  display: flex;
+  gap: 25px;
+}
+.reviewerName {
+  color: #191a15;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.psychologistAvatar {
+  border-radius: 15px;
+  position: relative;
+}
+
+.psychologistAvatarWrapper {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  border-radius: 30px;
+  border: 2px solid rgba(252, 131, 44, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

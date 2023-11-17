@@ -2,6 +2,7 @@ import React from "react";
 import heroImage from "../../assets/images/heroImage.png";
 import styles from "./Home.module.scss";
 import svg from "../../assets/sprite.svg";
+import { createPortal } from "react-dom";
 const Home = () => {
   return (
     <section className="hero">
@@ -15,7 +16,10 @@ const Home = () => {
             guide in your own life with the help of our experienced
             psychologists.
           </p>
-          <button className={styles.heroBtn}>
+          <button
+            className={styles.heroBtn}
+            onClick={() => createPortal(<p>hello</p>, document.body)}
+          >
             Get started{" "}
             <svg width={18} height={18}>
               <use href={svg + "#icon-arow"}></use>
