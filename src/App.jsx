@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Home from "./pages/Home/Home";
 import PsychologistCard from "./components/PsychologistCard/PsychologistCard";
+import { db } from "./firebase.js";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,6 +37,7 @@ function App() {
           },
         ]}
       />
+      {console.log(db)}
     </>
   );
 }
