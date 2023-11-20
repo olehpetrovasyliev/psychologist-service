@@ -1,0 +1,48 @@
+.backdrop {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(25, 26, 21, 0.6);
+}
+
+.modal {
+  padding: 64px;
+  border-radius: 30px;
+  background: #fbfbfb;
+  position: relative;
+  color: #191a15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  & h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+  & p {
+    color: rgba(25, 26, 21, 0.5);
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 27.375rem;
+  }
+  & input {
+    border-radius: 12px;
+    border: 1px solid rgba(25, 26, 21, 0.1);
+    color: #191a15;
+    display: block;
+    width: 438px;
+    height: 52px;
+  }
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 190px;
+  }
+}
