@@ -87,12 +87,23 @@
 }
 
 .psychologistAvatarWrapper {
-  width: 120px;
-  height: 120px;
+  padding: 12px;
+  height: 100px;
   position: relative;
   border-radius: 30px;
   border: 2px solid rgba(252, 131, 44, 0.2);
+}
+.psychologistCardWrapper {
+  max-width: 1184px;
+  position: relative;
+}
+
+.mainInfoWrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 24px;
+}
+
+.topicWrapper {
+  display: flex;
+  justify-content: space-between;
 }

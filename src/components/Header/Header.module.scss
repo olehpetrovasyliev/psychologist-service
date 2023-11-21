@@ -1,0 +1,43 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 128px;
+  z-index: 1;
+}
+.linksWrapper {
+  display: flex;
+  gap: 40px;
+}
+.login {
+  display: flex;
+  padding: 14px 39px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  background: rgba(25, 26, 21, 0);
+}
+.signup {
+  display: flex;
+  padding: 14px 40px;
+  justify-content: center;
+  align-items: center;
+  color: #fbfbfb;
+}
+
+.headerButtonsWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.logo {
+  color: #fc832c;
+  font-size: 1.25rem;
+  font-weight: 500;
+  & span {
+    color: #191a15;
+  }
+}

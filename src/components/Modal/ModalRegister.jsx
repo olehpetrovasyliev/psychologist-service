@@ -4,7 +4,7 @@ const Modal = () => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <div className="modal-text">
+        <div className="modalText">
           <h2>Register</h2>
           <p>
             Thank you for your interest in our platform! In order to register,
@@ -12,12 +12,12 @@ const Modal = () => {
             information.
           </p>
         </div>
-        <div className="modal-form">
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-        </div>
-        <button>Sing In</button>
+        <form className="modalForm">
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button type="submit">Sing Up</button>
+        </form>
       </div>
     </div>
   );
