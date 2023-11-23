@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import PsychologistsList from "../../components/PsychologistsList/PsychologistsList";
 const Home = () => {
   return (
-    <>
+    <main>
       <section className="hero">
         <div className={styles.heroWrapper}>
           <div className="content-wrapper">
@@ -60,8 +60,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <PsychologistsList />
-    </>
+      {/* <PsychologistsList /> */}
+    </main>
   );
 };
 

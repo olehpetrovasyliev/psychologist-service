@@ -22,6 +22,7 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  // flex-wrap: wrap;
 }
 
 .delimiter {
@@ -50,7 +51,7 @@
 .about {
   color: rgba(25, 26, 21, 0.5);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .pseudoAvatar {
@@ -94,8 +95,8 @@
   border: 2px solid rgba(252, 131, 44, 0.2);
 }
 .psychologistCardWrapper {
-  max-width: 1184px;
   position: relative;
+  margin-bottom: 32px;
 }
 
 .mainInfoWrapper {
@@ -107,3 +108,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.readMoreBtn {
+  color: #191a15;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration-line: underline;
+  background: none;
+}
+
+// .heart {
+//   position: absolute;
+//   top: 0;
+//   right: -10px;
+// }

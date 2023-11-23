@@ -79,7 +79,10 @@ const PsychologistCard = ({
           </div>
           <p className={styles.about}>{about}</p>
           {!isFullOpened ? (
-            <button onClick={() => setIsFullOpened((prew) => !prew)}>
+            <button
+              onClick={() => setIsFullOpened((prew) => !prew)}
+              className={styles.readMoreBtn}
+            >
               Read more
             </button>
           ) : (

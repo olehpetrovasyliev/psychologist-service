@@ -13,9 +13,9 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.linksWrapper}>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/psychologists">Psychologists</NavLink>
-          {isAuth && <NavLink to="/favorites">Favorites</NavLink>}
+          <NavLink to="/" className={styles.headerNavLink}>Home</NavLink>
+          <NavLink to="/psychologists" className={styles.headerNavLink}>Psychologists</NavLink>
+          {isAuth && <NavLink to="/favorites" className={styles.headerNavLink}>Favorites</NavLink>}
         </div>
         <div className={styles.headerButtonsWrapper}>
           <button className={styles.login}>Log In</button>

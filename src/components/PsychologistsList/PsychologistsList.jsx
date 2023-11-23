@@ -1,40 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PsychologistCard from "../PsychologistCard/PsychologistCard";
-import { db } from "../../firebase.js";
-import { child, get, ref } from "firebase/database";
+import Select from "react-select";
 
-const PsychologistsList = () => {
-  const [psychologists, setPsychologists] = useState([]);
+const PsychologistsList = ({ arr }) => {
   const [visiblePsychologists, setVisiblePsychologists] = useState(3);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const psychologistsRef = ref(db);
-
-      try {
-        const snapshot = await get(child(psychologistsRef, "psychologists"));
-        const data = snapshot.val();
-
-        if (data) {
-          const psychologistsArray = Object.values(data);
-          setPsychologists(psychologistsArray);
-        }
-      } catch (error) {
-        console.error("Error fetching data from Realtime Database: ", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleLoadMore = () => {
     setVisiblePsychologists((prevVisible) => prevVisible + 3);
   };
 
+  const options = [
+    { value: "a-z", label: "A to Z" },
+    { value: "z-a", label: "Z to A" },
+    { value: "less10", label: "Less than 10$" },
+    { value: "more10", label: "Greater than 10$" },
+    { value: "popular", label: "Popular" },
+    { value: "nonpopular", label: "Not popular" },
+    { value: "all", label: "Show all" },
+  ];
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      borderRadius: "14px",
+      background: "#fc832c",
+      border: "none",
+      maxWidth: "226px",
+      color: "#fbfbfb ",
+    }),
+    dropdownIndicator: (provided) => ({
+      ...provided,
+      color: "#fbfbfb",
+    }),
+    input: (provided) => ({
+      ...provided,
+      color: "#fbfbfb",
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: "#fbfbfb",
+      padding: "10px",
+      color: state.isSelected ? "#191A15" : "rgba(25, 26, 21, 0.3)",
+      ":hover": {
+        color: "#191A15",
+      },
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#fbfbfb",
+    }),
+  };
   return (
-    <div>
+    <section>
+      <Select options={options} styles={customStyles} isSearchable={false} />
+
       <ul>
-        {psychologists.slice(0, visiblePsychologists).map((el, index) => (
+        {arr.slice(0, visiblePsychologists).map((el, index) => (
           <PsychologistCard
             key={index}
             name={el.name}
@@ -50,10 +70,10 @@ const PsychologistsList = () => {
           />
         ))}
       </ul>
-      {visiblePsychologists < psychologists.length && (
-        <button onClick={handleLoadMore}>Load More</button>
+      {visiblePsychologists < arr.length && (
+        <button onClick={() => handleLoadMore()}>Load More</button>
       )}
-    </div>
+    </section>
   );
 };
 

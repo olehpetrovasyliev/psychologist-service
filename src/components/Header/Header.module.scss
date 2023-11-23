@@ -2,7 +2,8 @@
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 24px 128px;
   z-index: 1;
@@ -10,7 +11,14 @@
 .linksWrapper {
   display: flex;
   gap: 40px;
+  @media screen and (max-width: 1023px) {
+    gap: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
+
 .login {
   display: flex;
   padding: 14px 39px;
@@ -31,6 +39,9 @@
 .headerButtonsWrapper {
   display: flex;
   gap: 8px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .logo {
@@ -39,5 +50,20 @@
   font-weight: 500;
   & span {
     color: #191a15;
+  }
+}
+.headerNavLink {
+  color: #191a15;
+  font-size: 1rem;
+  font-weight: 400;
+
+  &:hover {
+    color: #fc832c;
+    text-decoration: underline;
+    transition: 500ms;
+  }
+  &.active {
+    color: #fc832c;
+    text-decoration: underline;
   }
 }

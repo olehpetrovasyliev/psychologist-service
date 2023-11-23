@@ -1,5 +1,6 @@
 .heroWrapper {
   display: flex;
+  justify-content: center;
   gap: 125px;
 }
 
@@ -50,7 +51,10 @@
   position: absolute;
 
   top: 360px;
-  right: 240px;
+  right: 200px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 .decorQuestion {
   background-color: #54be96;
@@ -100,4 +104,11 @@
   color: #fbfbfb;
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.heroImage {
+  width: 464px;
+  // @media screen and (max-width: 768px) {
+  //   width: 300px;
+  // }
 }
