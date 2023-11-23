@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PsychologistCard from "../PsychologistCard/PsychologistCard";
 import Select from "react-select";
+import styles from "./PsychologistList.module.scss";
 
 const PsychologistsList = ({ arr }) => {
   const [visiblePsychologists, setVisiblePsychologists] = useState(3);
@@ -51,7 +52,13 @@ const PsychologistsList = ({ arr }) => {
   };
   return (
     <section>
-      <Select options={options} styles={customStyles} isSearchable={false} />
+      <span>Filter</span>
+      <Select
+        options={options}
+        styles={customStyles}
+        isSearchable={false}
+        defaultValue="all"
+      />
 
       <ul>
         {arr.slice(0, visiblePsychologists).map((el, index) => (
@@ -71,7 +78,9 @@ const PsychologistsList = ({ arr }) => {
         ))}
       </ul>
       {visiblePsychologists < arr.length && (
-        <button onClick={() => handleLoadMore()}>Load More</button>
+        <button onClick={() => handleLoadMore()} className={styles.loadMore}>
+          Load More
+        </button>
       )}
     </section>
   );
