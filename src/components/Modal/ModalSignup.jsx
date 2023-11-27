@@ -43,15 +43,14 @@ const ModalSignup = () => {
               await createUserWithEmailAndPassword(
                 auth,
                 values.email,
+                values.name,
                 values.password
               );
 
-              // You can also update the user's display name if needed
               await updateProfile(auth.currentUser, {
                 displayName: values.name,
               });
 
-              // Handle any additional registration logic or redirect the user
               console.log("User registered successfully!");
             } catch (error) {
               console.error("Registration failed:", error.message);

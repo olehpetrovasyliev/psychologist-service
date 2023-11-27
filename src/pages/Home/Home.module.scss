@@ -1,8 +1,22 @@
+$primary-color: #fc832c;
+$secondary-color: #fbfbfb;
+$accent-color1: #54be96;
+$accent-color2: #fbc75e;
+
 .heroWrapper {
   display: flex;
   justify-content: center;
   gap: 125px;
   padding-top: 100px;
+
+  @media screen and (max-width: 1023px) {
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .heroHeading {
@@ -11,8 +25,17 @@
   max-width: 595px;
   margin: 0;
   margin-bottom: 20px;
+
   & i {
-    color: #fc832c;
+    color: $primary-color;
+  }
+
+  @media screen and (max-width: 1023px) {
+    font-size: 4rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 2.5rem;
   }
 }
 
@@ -20,10 +43,16 @@
   max-width: 510px;
   font-size: 1.125rem;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 1023px) {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
 }
+
 .heroBtn {
   padding: 18px 50px;
-  color: #fbfbfb;
+  color: $secondary-color;
   display: flex;
   gap: 18px;
   align-items: center;
@@ -34,7 +63,16 @@
   font-size: 1.25rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: #fc832c;
+  background-color: $primary-color;
+
+  @media screen and (max-width: 1023px) {
+    max-width: 100%;
+    font-size: 1.1rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 1rem;
+  }
 }
 
 .imageWrapper {
@@ -43,28 +81,40 @@
 }
 
 .decorMain {
-  background-color: #fc832c;
+  background-color: $primary-color;
   display: flex;
   padding: 32px;
   border-radius: 20px;
   gap: 1rem;
   width: 311px;
   position: absolute;
-
   top: 360px;
   right: 200px;
-  @media screen and (max-width: 767px) {
+  color: $secondary-color;
+  font-size: 0.875rem;
+  font-weight: 400;
+
+  @media screen and (max-width: 1023px) {
     display: none;
   }
 }
-.decorQuestion {
-  background-color: #54be96;
-  width: 40px;
-  height: 40px;
+
+.decorQuestion,
+.decorPeople,
+.checkedWrapper {
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  background-color: $secondary-color;
+}
+
+.decorQuestion {
+  background-color: $accent-color1;
+  width: 40px;
+  height: 40px;
   position: absolute;
   rotate: -15deg;
   top: 190px;
@@ -72,13 +122,9 @@
 }
 
 .decorPeople {
-  background-color: #fbc75e;
+  background-color: $accent-color2;
   width: 50px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
   position: absolute;
   rotate: 15deg;
   top: 50px;
@@ -86,30 +132,18 @@
 }
 
 .checkedWrapper {
-  background-color: #fbfbfb;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
-
-.decorMainText {
-  color: #fbfbfb;
-  font-size: 0.875rem;
-  font-weight: 400;
+  background-color: $secondary-color;
 }
 
 .decorMainNumber {
-  color: #fbfbfb;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
 .heroImage {
   width: 464px;
-  // @media screen and (max-width: 768px) {
-  //   width: 300px;
-  // }
+
+  @media screen and (max-width: 1023px) {
+    width: 300px;
+  }
 }
