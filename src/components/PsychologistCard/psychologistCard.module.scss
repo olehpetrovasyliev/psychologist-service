@@ -2,17 +2,55 @@
   color: #8a8a89;
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.9rem;
+  }
 }
+
 .name {
   color: #191a15;
   font-size: 1.5rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.9rem;
+  }
 }
 
 .numbers {
   color: #191a15;
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
+
   & .price {
     color: #38cd3e;
   }
@@ -22,7 +60,11 @@
   display: flex;
   gap: 16px;
   align-items: center;
-  // flex-wrap: wrap;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .delimiter {
@@ -30,28 +72,60 @@
   height: 16px;
   background-color: rgba(25, 26, 21, 0.2);
 }
+
 .ratingWraper {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .characterisics {
   color: #8a8a89;
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
+
   & span {
     color: #191a15;
   }
 }
+
 .characteristicsWrapper {
   display: flex;
   gap: 36px;
+
+  @media (max-width: 320px) {
+    gap: 16px;
+  }
 }
 
 .about {
   color: rgba(25, 26, 21, 0.5);
   font-weight: 400;
   font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
 }
 
 .pseudoAvatar {
@@ -70,16 +144,34 @@
   display: flex;
   gap: 8px;
   align-items: center;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .reviewerDetails {
   display: flex;
   gap: 25px;
 }
+
 .reviewerName {
   color: #191a15;
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
 }
 
 .psychologistAvatar {
@@ -93,7 +185,16 @@
   position: relative;
   border-radius: 30px;
   border: 2px solid rgba(252, 131, 44, 0.2);
+
+  @media (max-width: 375px) {
+    height: 80px;
+  }
+
+  @media (max-width: 320px) {
+    height: 60px;
+  }
 }
+
 .psychologistCardWrapper {
   position: relative;
   margin-bottom: 32px;
@@ -102,6 +203,18 @@
 .mainInfoWrapper {
   display: flex;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    gap: 16px;
+  }
+
+  @media (max-width: 375px) {
+    gap: 12px;
+  }
+
+  @media (max-width: 320px) {
+    gap: 8px;
+  }
 }
 
 .topicWrapper {
@@ -115,10 +228,36 @@
   font-weight: 500;
   text-decoration-line: underline;
   background: none;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
 }
 
-// .heart {
-//   position: absolute;
-//   top: 0;
-//   right: -10px;
-// }
+@media (max-width: 600px) {
+  .psychologistCardWrapper {
+    margin-bottom: 16px;
+  }
+
+  .psychologistAvatarWrapper {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .characteristicsWrapper {
+    flex-direction: column;
+  }
+
+  .topicWrapper {
+    flex-direction: column;
+  }
+}
