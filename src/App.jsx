@@ -11,6 +11,7 @@ import {
 } from "./helpers/redux/modal/modalSelectors.js";
 import ModalSignup from "./components/Modal/ModalSignup.jsx";
 import ModalLogin from "./components/Modal/ModalLogin.jsx";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const isModalSignupOpen = useSelector(selectIsModalSignupOpen);
@@ -27,6 +28,7 @@ function App() {
       </Routes>
       {isModalSignupOpen && <ModalSignup />}
       {isModalLoginOpen && <ModalLogin />}
+      <ToastContainer autoClose={1000} />
     </>
   );
 }

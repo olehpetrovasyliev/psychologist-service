@@ -8,7 +8,28 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../../firebase";
+import { toast } from "react-toastify";
+const handleSubmit = async (values) => {
+  try {
+    const auth = getAuth(app);
 
+    // Create user with email and password
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      values.email,
+      values.password
+    );
+
+    // Set the display name for the user
+    await updateProfile(userCredential.user, {
+      displayName: values.name,
+    });
+
+    toast.success("Profile created successfully");
+  } catch (error) {
+    toast.error("Sorry, server is dead");
+  }
+};
 const ModalSignup = () => {
   return (
     <div className={styles.backdrop}>
@@ -34,28 +55,7 @@ const ModalSignup = () => {
               .required("Required"),
             password: Yup.string().required("Required"),
           })}
-          onSubmit={async (values) => {
-            try {
-              // Get the authentication instance
-              const auth = getAuth(app);
-
-              // Register the user with Firebase authentication
-              await createUserWithEmailAndPassword(
-                auth,
-                values.email,
-                values.name,
-                values.password
-              );
-
-              await updateProfile(auth.currentUser, {
-                displayName: values.name,
-              });
-
-              console.log("User registered successfully!");
-            } catch (error) {
-              console.error("Registration failed:", error.message);
-            }
-          }}
+          onSubmit={handleSubmit}
         >
           <Form className="modalForm">
             <Field type="text" placeholder="Name" name="name" />

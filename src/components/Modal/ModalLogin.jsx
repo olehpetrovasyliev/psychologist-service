@@ -2,8 +2,21 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./Modal.module.scss";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
-// import "firebase/auth";
+import { toast } from "react-toastify";
+
+const handleSubmit = async (values) => {
+  try {
+    const auth = getAuth(app);
+
+    await signInWithEmailAndPassword(auth, values.email, values.password);
+
+    toast.success("Login successful");
+  } catch (error) {
+    toast.error("Invalid credentials. Please try again.");
+  }
+};
 
 const ModalLogin = () => {
   return (
@@ -27,7 +40,7 @@ const ModalLogin = () => {
               .required("Required"),
             password: Yup.string().required("Required"),
           })}
-          onSubmit={() => console.log(1)}
+          onSubmit={handleSubmit}
         >
           <Form className="modalForm">
             <Field type="email" placeholder="Email" name="email" />
