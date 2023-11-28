@@ -28,7 +28,7 @@ const Psychologists = () => {
 
   return (
     <main>
-      <PsychologistsList arr={psychologists} />;
+      <PsychologistsList arr={psychologists} />
     </main>
   );
 };
