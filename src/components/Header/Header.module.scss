@@ -68,3 +68,27 @@
     text-decoration: underline;
   }
 }
+.logoutBtn {
+  border-radius: 30px;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  background-color: transparent;
+  padding: 14px 39px;
+}
+.avatarWrapper {
+  background-color: #fc832c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 10px;
+}
+.profileInfoWrapper {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.anotherOneWrapper {
+  display: flex;
+  gap: 28px;
+}

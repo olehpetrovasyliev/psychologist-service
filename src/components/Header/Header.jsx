@@ -8,6 +8,7 @@ import {
 } from "../../helpers/redux/modal/modalSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
+import svg from "../../assets/sprite.svg";
 
 const Header = () => {
   const [user, setUser] = useState(false);
@@ -43,7 +44,17 @@ const Header = () => {
         </div>
         <div className={styles.headerButtonsWrapper}>
           {user ? (
-            <p>{user.displayName}</p>
+            <div className={styles.anotherOneWrapper}>
+              <div className={styles.profileInfoWrapper}>
+                <div className={styles.avatarWrapper}>
+                  <svg width={24} height={24}>
+                    <use href={svg + "#icon-mdi_user"}></use>
+                  </svg>
+                </div>
+                <p className={styles.userName}>{user.displayName}</p>
+              </div>
+              <button className={styles.logoutBtn}>Log Out</button>
+            </div>
           ) : (
             <>
               <button
@@ -56,7 +67,7 @@ const Header = () => {
                 className={styles.signup}
                 onClick={() => dispatch(openModalSignup())}
               >
-                sign Up
+                Sign Up
               </button>{" "}
             </>
           )}
