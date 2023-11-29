@@ -9,6 +9,7 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import svg from "../../assets/sprite.svg";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const [user, setUser] = useState(false);
@@ -19,6 +20,13 @@ const Header = () => {
     });
     return () => unsubscribe();
   }, []);
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      toast.success("Logout successful. See you soon!");
+    }
+  };
 
   const dispatch = useDispatch();
   return (
@@ -53,7 +61,9 @@ const Header = () => {
                 </div>
                 <p className={styles.userName}>{user.displayName}</p>
               </div>
-              <button className={styles.logoutBtn}>Log Out</button>
+              <button className={styles.logoutBtn} onClick={handleLogout}>
+                Log Out
+              </button>
             </div>
           ) : (
             <>
