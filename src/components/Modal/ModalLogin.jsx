@@ -5,24 +5,47 @@ import styles from "./Modal.module.scss";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
 import { toast } from "react-toastify";
-
-const handleSubmit = async (values) => {
-  try {
-    const auth = getAuth(app);
-
-    await signInWithEmailAndPassword(auth, values.email, values.password);
-
-    toast.success("Login successful");
-  } catch (error) {
-    toast.error("Invalid credentials. Please try again.");
-  }
-};
+import { useDispatch } from "react-redux";
+import { closeModalLogin } from "../../helpers/redux/modal/modalSlice";
 
 const ModalLogin = () => {
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(closeModalLogin());
+  };
+
+  const handleSubmit = async (values) => {
+    try {
+      const auth = getAuth(app);
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      handleClose();
+      toast.success("Login successful");
+    } catch (error) {
+      toast.error("Invalid credentials. Please try again.");
+    }
+  };
+
+  // Handle closing the modal when the escape key is pressed
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      handleClose();
+    }
+  };
+
   return (
-    <div className={styles.backdrop}>
-      <div className={styles.modal}>
+    <div className={styles.backdrop} onClick={handleClose}>
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleKeyDown}
+        tabIndex="0"
+      >
         <div className="modalText">
+          <button className={styles.closeButton} onClick={handleClose}>
+            Close
+          </button>
           <h2>Log In</h2>
           <p>
             Welcome back! Please enter your credentials to access your account

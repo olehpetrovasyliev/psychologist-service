@@ -9,31 +9,48 @@ import {
 } from "firebase/auth";
 import { app } from "../../firebase";
 import { toast } from "react-toastify";
-const handleSubmit = async (values) => {
-  try {
-    const auth = getAuth(app);
+import { useDispatch } from "react-redux";
+import { closeModalLogin } from "../../helpers/redux/modal/modalSlice";
 
-    // Create user with email and password
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      values.email,
-      values.password
-    );
-
-    // Set the display name for the user
-    await updateProfile(userCredential.user, {
-      displayName: values.name,
-    });
-
-    toast.success("Profile created successfully");
-  } catch (error) {
-    toast.error("Sorry, server is dead");
-  }
-};
 const ModalSignup = () => {
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(closeModalLogin());
+  };
+
+  const handleSubmit = async (values) => {
+    try {
+      const auth = getAuth(app);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      await updateProfile(userCredential.user, {
+        displayName: values.name,
+      });
+      handleClose();
+      toast.success("Profile created successfully");
+    } catch (error) {
+      toast.error("Sorry, server is dead");
+    }
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      handleClose();
+    }
+  };
+
   return (
-    <div className={styles.backdrop}>
-      <div className={styles.modal}>
+    <div className={styles.backdrop} onClick={handleClose}>
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleKeyDown}
+        tabIndex="0"
+      >
         <div className="modalText">
           <h2>Register</h2>
           <p>
