@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./Modal.module.scss";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "../../firebase";
+import { app, auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { closeModalLogin } from "../../helpers/redux/modal/modalSlice";
@@ -17,7 +17,7 @@ const ModalLogin = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const auth = getAuth(app);
+     
       await signInWithEmailAndPassword(auth, values.email, values.password);
       handleClose();
       toast.success("Login successful");

@@ -249,3 +249,19 @@
     font-size: 0.6rem;
   }
 }
+
+.comment {
+  color: rgba(25, 26, 21, 0.5);
+  font-size: 1rem;
+  @media screen and (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+}
+.favBtn {
+  background-color: transparent;
+  border: none;
+  & .added {
+    stroke: #fc832c;
+    fill: #fc832c;
+  }
+}

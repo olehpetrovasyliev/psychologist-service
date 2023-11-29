@@ -44,7 +44,7 @@ const ModalSignup = () => {
   };
 
   return (
-    <div className={styles.backdrop} onClick={handleClose}>
+    <div className={styles.backdrop} onClick={() => handleClose()}>
       <div
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}

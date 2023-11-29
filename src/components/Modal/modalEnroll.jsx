@@ -7,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { app } from "../../firebase";
+import { app, auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { closeModalLogin } from "../../helpers/redux/modal/modalSlice";
@@ -21,7 +21,6 @@ const ModalSignup = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const auth = getAuth(app);
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         values.email,

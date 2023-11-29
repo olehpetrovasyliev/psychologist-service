@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import svg from "../../assets/sprite.svg";
 import styles from "./psychologistCard.module.scss";
 import humanPlaceholder from "../../assets/images/human-placeholder.jpg";
+import { useDispatch } from "react-redux";
+import { openModalAppointment } from "../../helpers/redux/modal/modalSlice";
 
 const PsychologistCard = ({
   name,
@@ -15,7 +17,9 @@ const PsychologistCard = ({
   about,
   reviews,
 }) => {
+  const dispatch = useDispatch();
   const [isFullOpened, setIsFullOpened] = useState(false);
+
   return (
     <li className={styles.psychologistCardWrapper}>
       <div className={styles.mainInfoWrapper}>
@@ -48,15 +52,17 @@ const PsychologistCard = ({
                 Price / 1 hour:{" "}
                 <span className={styles.price}>{price_per_hour + "$"}</span>
               </p>
-              <svg
-                fill="none"
-                stroke="#000"
-                width={40}
-                height={40}
-                className={styles.heart}
-              >
-                <use href={svg + "#icon-heart"}></use>
-              </svg>
+              <button className={styles.favBtn}>
+                <svg
+                  fill="none"
+                  stroke="#000"
+                  width={40}
+                  height={40}
+                  className={styles.heart}
+                >
+                  <use href={svg + "#icon-heart"}></use>
+                </svg>
+              </button>
             </div>
           </div>
           <div>
@@ -102,10 +108,12 @@ const PsychologistCard = ({
                       </div>
                     </div>
                   </div>
-                  <p>{r.comment}</p>
+                  <p className={styles.comment}>{r.comment}</p>
                 </li>
               ))}
-              <button>Make an appointment</button>
+              <button onClick={() => dispatch(openModalAppointment())}>
+                Make an appointment
+              </button>
             </ul>
           )}
         </div>
