@@ -6,6 +6,7 @@ $accent-color2: #fbc75e;
 .heroWrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 125px;
   padding-top: 100px;
 
@@ -20,7 +21,7 @@ $accent-color2: #fbc75e;
 }
 
 .heroHeading {
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: 1.1;
   max-width: 595px;
   margin: 0;
@@ -109,6 +110,9 @@ $accent-color2: #fbc75e;
   justify-content: center;
   border-radius: 10px;
   background-color: $secondary-color;
+  @media screen and (max-width: 375px) {
+    display: none;
+  }
 }
 
 .decorQuestion {
