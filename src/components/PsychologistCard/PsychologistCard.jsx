@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import svg from "../../assets/sprite.svg";
 import styles from "./psychologistCard.module.scss";
 import humanPlaceholder from "../../assets/images/human-placeholder.jpg";
 import { useDispatch } from "react-redux";
 import { openModalAppointment } from "../../helpers/redux/modal/modalSlice";
+import { auth, db } from "../../firebase";
+import { toast } from "react-toastify";
+import { child, get, ref, set, remove } from "firebase/database";
 
 const PsychologistCard = ({
   name,
@@ -16,9 +19,49 @@ const PsychologistCard = ({
   initial_consultation,
   about,
   reviews,
+  id,
 }) => {
   const dispatch = useDispatch();
+
   const [isFullOpened, setIsFullOpened] = useState(false);
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const user = auth.currentUser;
+
+  const favoritesRef = ref(db, `users/${user.uid}/favorites`);
+
+  useEffect(() => {
+    if (user) {
+      get(child(favoritesRef, id)).then((snapshot) => {
+        setIsFavorite(snapshot.exists());
+      });
+    }
+  }, []);
+  const addFavorite = () => {
+    if (user) {
+      set(child(favoritesRef, id), true).then(() => {
+        setIsFavorite(true);
+      });
+    } else {
+      toast.warning("Please log in");
+    }
+  };
+  const removeFavorite = () => {
+    if (user) {
+      get(child(favoritesRef, id)).then((snapshot) => {
+        if (snapshot.exists()) {
+          remove(child(favoritesRef, id)).then(() => {
+            setIsFavorite(false);
+          });
+        } else {
+          console.log("Psychologist not found in favorites");
+        }
+      });
+    } else {
+      toast.warning("Please log in");
+    }
+  };
 
   return (
     <li className={styles.psychologistCardWrapper}>
@@ -52,12 +95,14 @@ const PsychologistCard = ({
                 Price / 1 hour:{" "}
                 <span className={styles.price}>{price_per_hour + "$"}</span>
               </p>
-              <button className={styles.favBtn}>
+              <button
+                className={styles.favBtn}
+                onClick={isFavorite ? removeFavorite : addFavorite}
+              >
                 <svg
-                  fill="none"
-                  stroke="#000"
-                  width={40}
-                  height={40}
+                  fill={isFavorite ? "#ffc832c" : "none"}
+                  stroke={isFavorite ? "#ffc832c" : "#000"}
+                 
                   className={styles.heart}
                 >
                   <use href={svg + "#icon-heart"}></use>
@@ -93,8 +138,8 @@ const PsychologistCard = ({
             </button>
           ) : (
             <ul>
-              {reviews.map((r) => (
-                <li>
+              {reviews.map((r, i) => (
+                <li className={styles.review} key={i}>
                   <div className={styles.reviewerDetails}>
                     <span className={styles.pseudoAvatar}>{r.reviewer[0]}</span>
 
@@ -111,7 +156,10 @@ const PsychologistCard = ({
                   <p className={styles.comment}>{r.comment}</p>
                 </li>
               ))}
-              <button onClick={() => dispatch(openModalAppointment())}>
+              <button
+                className={styles.enrollBtn}
+                onClick={() => dispatch(openModalAppointment())}
+              >
                 Make an appointment
               </button>
             </ul>

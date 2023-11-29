@@ -27,6 +27,7 @@ const PsychologistsList = ({ arr }) => {
       border: "none",
       maxWidth: "226px",
       color: "#fbfbfb ",
+      marginBottom: "32px",
     }),
     dropdownIndicator: (provided) => ({
       ...provided,
@@ -61,9 +62,9 @@ const PsychologistsList = ({ arr }) => {
       />
 
       <ul>
-        {arr.slice(0, visiblePsychologists).map((el, index) => (
+        {arr.slice(0, visiblePsychologists).map((el) => (
           <PsychologistCard
-            key={index}
+            key={el.id}
             name={el.name}
             avatar_url={el.avatar_url}
             experience={el.experience}
@@ -74,6 +75,7 @@ const PsychologistsList = ({ arr }) => {
             initial_consultation={el.initial_consultation}
             about={el.about}
             reviews={el.reviews}
+            id={el.id}
           />
         ))}
       </ul>

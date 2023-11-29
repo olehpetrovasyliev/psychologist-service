@@ -16,7 +16,6 @@ const Header = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      console.log(user);
     });
     return () => unsubscribe();
   }, []);
@@ -82,6 +81,7 @@ const Header = () => {
             </>
           )}
         </div>
+        <button className={styles.brgr}>menu</button>
       </header>
       <Outlet />
     </>
