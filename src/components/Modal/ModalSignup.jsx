@@ -57,6 +57,9 @@ const ModalSignup = () => {
         tabIndex="0"
       >
         <div className="modalText">
+          <button className={styles.closeButton} onClick={handleCloseModal}>
+            X
+          </button>
           <h2>Register</h2>
           <p>
             Thank you for your interest in our platform! In order to register,

@@ -23,39 +23,117 @@
   justify-content: center;
   gap: 40px;
   z-index: 1000;
-  & h2 {
-    font-size: 2.5rem;
-    font-weight: 500;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+  @media screen and (max-width: 1023px) {
+    padding: 48px;
   }
-  & p {
-    color: rgba(25, 26, 21, 0.5);
-    font-size: 1rem;
-    font-weight: 400;
-    max-width: 27.375rem;
+  @media screen and (max-width: 768px) {
+    max-width: 330px;
+    padding: 24px;
   }
-  & form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  @media screen and (max-width: 375px) {
+    max-width: 280px;
   }
-  & input {
-    border-radius: 12px;
-    border: 1px solid rgba(25, 26, 21, 0.2);
-    color: #191a15;
-    display: block;
-    max-width: 438px;
-    height: 52px;
-    padding-left: 16px;
-    &::placeholder {
-      color: #191a15;
-      font-size: 1rem;
-      font-weight: 400;
-    }
+}
+
+.modal h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.modal p {
+  color: rgba(25, 26, 21, 0.5);
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 27.375rem;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modal input {
+  border-radius: 12px;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  color: #191a15;
+  display: block;
+  max-width: 438px;
+  height: 52px;
+  padding-left: 16px;
+}
+
+.modal input::placeholder {
+  color: #191a15;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.modal button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 190px;
+}
+
+/* Media Queries for Tablet */
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 32px;
   }
-  & button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 190px;
+
+  .modal h2 {
+    font-size: 2rem;
+  }
+
+  .modal p {
+    max-width: 100%;
+  }
+
+  .modal input {
+    max-width: 100%;
+  }
+
+  .modal button {
+    padding: 16px 20px;
+  }
+}
+
+/* Media Queries for Mobile */
+@media screen and (max-width: 480px) {
+  .modal {
+    padding: 16px;
+  }
+
+  .modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal p {
+    font-size: 0.875rem;
+  }
+
+  .modal input {
+    height: 40px;
+    padding-left: 12px;
+  }
+
+  .modal button {
+    padding: 12px;
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  display: block;
+  position: absolute;
+  padding: 0;
+  top: 10px;
+  right: -150px;
+  @media screen and (max-width: 768px) {
+    right: 10px;
   }
 }

@@ -45,6 +45,9 @@ const ModalSignup = ({ psychologist }) => {
         tabIndex="0"
       >
         <div className="modalText">
+          <button className={styles.closeButton} onClick={handleCloseModal}>
+            X
+          </button>
           <h2>Make an appointment with a psychologists</h2>
           <p>
             You are on the verge of changing your life for the better. Fill out

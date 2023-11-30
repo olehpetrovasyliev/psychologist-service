@@ -44,7 +44,7 @@ const ModalLogin = () => {
       >
         <div className="modalText">
           <button className={styles.closeButton} onClick={handleCloseModal}>
-            Close
+            X
           </button>
           <h2>Log In</h2>
           <p>
