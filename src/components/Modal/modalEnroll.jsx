@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./Modal.module.scss";
@@ -10,74 +10,83 @@ import {
 import { app, auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { closeModalLogin } from "../../helpers/redux/modal/modalSlice";
+import {
+  closeModalAppointment,
+  closeModalLogin,
+} from "../../helpers/redux/modal/modalSlice";
 
-const ModalSignup = () => {
+const ModalSignup = ({ psychologist }) => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
 
-  const handleClose = () => {
-    dispatch(closeModalLogin());
+  const handleCloseModal = () => {
+    dispatch(closeModalAppointment());
+  };
+  const handleSubmit = () => {
+    toast.success("Thank you, we`ll send invitation via email");
+    handleCloseModal();
   };
 
-  const handleSubmit = async (values) => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        values.email,
-        values.password
-      );
-      await updateProfile(userCredential.user, {
-        displayName: values.name,
-      });
-      handleClose();
-      toast.success("Profile created successfully");
-    } catch (error) {
-      toast.error("Sorry, server is dead");
-    }
-  };
-  const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
-      e.preventDefault();
-      handleClose();
+  const handleKeyPress = (event) => {
+    if (event.key === "Escape") {
+      handleCloseModal();
     }
   };
 
   return (
-    <div className={styles.backdrop} onClick={handleClose}>
+    <div className={styles.backdrop} onClick={handleCloseModal}>
       <div
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}
-        onKeyDown={handleKeyDown}
         tabIndex="0"
       >
         <div className="modalText">
-          <h2>Make an appointment</h2>
-          <p>This modal is not ready yet</p>
+          <h2>Make an appointment with a psychologists</h2>
+          <p>
+            You are on the verge of changing your life for the better. Fill out
+            the short form below to book your personal appointment with a
+            professional psychologist. We guarantee confidentiality and respect
+            for your privacy.
+          </p>
         </div>
+        {/* <div>
+          <img src={psychologist.avatar_url} alt="photo" />
+          <p>Your psychologists</p>
+          <h3>{psychologist.name}</h3>
+        </div> */}
         <Formik
           initialValues={{
             name: "",
+            phone: "",
             email: "",
-            password: "",
+            comment: "",
           }}
           validationSchema={Yup.object({
             name: Yup.string().required("Required"),
+            phone: Yup.string()
+              .matches(/^[0-9]+$/, "Invalid phone number")
+              .required("Required"),
             email: Yup.string()
               .email("Invalid email address")
               .required("Required"),
-            password: Yup.string().required("Required"),
+            comment: Yup.string(),
           })}
           onSubmit={handleSubmit}
         >
           <Form className="modalForm">
             <Field type="text" placeholder="Name" name="name" />
             <ErrorMessage name="name" component="div" className="error" />
+            <Field type="tel" placeholder="Phone" name="phone" />
+            <ErrorMessage name="password" component="div" className="error" />
 
             <Field type="email" placeholder="Email" name="email" />
             <ErrorMessage name="email" component="div" className="error" />
-
-            <Field type="password" placeholder="Password" name="password" />
-            <ErrorMessage name="password" component="div" className="error" />
+            <Field type="textarea" placeholder="Comment" name="comment" />
 
             <button type="submit">Sign Up</button>
           </Form>

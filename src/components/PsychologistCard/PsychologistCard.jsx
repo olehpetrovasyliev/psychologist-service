@@ -102,7 +102,6 @@ const PsychologistCard = ({
                 <svg
                   fill={isFavorite ? "#ffc832c" : "none"}
                   stroke={isFavorite ? "#ffc832c" : "#000"}
-                 
                   className={styles.heart}
                 >
                   <use href={svg + "#icon-heart"}></use>

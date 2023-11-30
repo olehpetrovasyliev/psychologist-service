@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./Modal.module.scss";
@@ -10,27 +10,23 @@ import { closeModalLogin } from "../../helpers/redux/modal/modalSlice";
 
 const ModalLogin = () => {
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
   const handleClose = () => {
     dispatch(closeModalLogin());
   };
 
   const handleSubmit = async (values) => {
     try {
-     
       await signInWithEmailAndPassword(auth, values.email, values.password);
       handleClose();
       toast.success("Login successful");
     } catch (error) {
       toast.error("Invalid credentials. Please try again.");
-    }
-  };
-
-  // Handle closing the modal when the escape key is pressed
-  const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
-      e.preventDefault();
-      handleClose();
     }
   };
 
