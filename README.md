@@ -22,7 +22,7 @@ Welcome to Psychologist Services web application. This platform aims to connect 
 2. **Psychologists Page:**
 
    - Browse a curated list of psychologists.
-   - Sort psychologists alphabetically, by price, or popularity.
+   - Filter psychologists by price, popularity, or sort alphabetically.
    - Easily add psychologists to your favorites.
 
 3. **Favorites Page:**
