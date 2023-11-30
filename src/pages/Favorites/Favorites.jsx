@@ -1,50 +1,48 @@
 import React, { useEffect, useState } from "react";
 import PsychologistsList from "../../components/PsychologistsList/PsychologistsList";
-import { child, get, ref } from "firebase/database";
+import { child, get, onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
+import { useDispatch } from "react-redux";
 
-const UserFavorites = () => {
-  const [userFavorites, setUserFavorites] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
+const MyFavorites = () => {
+  const [favoritePsychologists, setFavoritePsychologists] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchUserFavorites = async () => {
-      const userFavoritesRef = ref(db, `users/${currentUser.uid}/favorites`);
-      try {
-        const snapshot = await get(userFavoritesRef);
-        const data = snapshot.val();
+    const { currentUser } = auth;
 
-        if (data) {
-          const favoritesArray = Object.values(data);
-          setUserFavorites(favoritesArray);
-          console.log("Favorites loaded successfully");
-        } else {
-          console.log("No favorites found");
-        }
-      } catch (error) {
-        console.error("Error fetching user favorites: ", error);
+    if (!currentUser) {
+      return;
+    }
+
+    const userFavoritesRef = ref(db, `users/${currentUser.uid}/favorites`);
+
+    const handleFavoritesChange = (snapshot) => {
+      const data = snapshot.val();
+
+      if (data) {
+        const psychologistsArray = Object.values(data);
+        setFavoritePsychologists(psychologistsArray);
+      } else {
+        setFavoritePsychologists([]);
       }
     };
 
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setCurrentUser(user);
-        fetchUserFavorites();
-        console.log(user); // Move the console.log here
-      }
-    });
+    const favoritesListener = onValue(userFavoritesRef, handleFavoritesChange);
 
     return () => {
-      // Unsubscribe from the auth state listener when the component unmounts
-      unsubscribe();
+      favoritesListener();
     };
   }, []);
-
   return (
     <main>
-      <PsychologistsList arr={userFavorites} />
+      {favoritePsychologists.length ? (
+        <PsychologistsList arr={favoritePsychologists} />
+      ) : (
+        <p>You don`t have favoritew psychologists yet</p>
+      )}
     </main>
   );
 };
 
-export default UserFavorites;
+export default MyFavorites;

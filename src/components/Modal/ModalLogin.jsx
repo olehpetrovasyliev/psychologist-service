@@ -16,9 +16,14 @@ const ModalLogin = () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
-  const handleClose = () => {
-    dispatch(closeModalLogin());
+  const handleKeyPress = (event) => {
+    if (event.key === "Escape") {
+      handleCloseModal();
+    }
   };
+  function handleCloseModal() {
+    dispatch(closeModalLogin());
+  }
 
   const handleSubmit = async (values) => {
     try {
@@ -31,15 +36,14 @@ const ModalLogin = () => {
   };
 
   return (
-    <div className={styles.backdrop} onClick={handleClose}>
+    <div className={styles.backdrop} onClick={handleCloseModal}>
       <div
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}
-        onKeyDown={handleKeyDown}
         tabIndex="0"
       >
         <div className="modalText">
-          <button className={styles.closeButton} onClick={handleClose}>
+          <button className={styles.closeButton} onClick={handleCloseModal}>
             Close
           </button>
           <h2>Log In</h2>

@@ -72,12 +72,10 @@
 
   &:hover {
     color: #fc832c;
-    text-decoration: underline;
     transition: 500ms;
   }
   &.active {
     color: #fc832c;
-    text-decoration: underline;
   }
 }
 .logoutBtn {

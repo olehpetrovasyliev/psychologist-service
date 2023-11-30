@@ -18,6 +18,11 @@ import {
 const ModalSignup = ({ psychologist }) => {
   const dispatch = useDispatch();
   useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Escape") {
+        handleCloseModal();
+      }
+    };
     document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
@@ -30,12 +35,6 @@ const ModalSignup = ({ psychologist }) => {
   const handleSubmit = () => {
     toast.success("Thank you, we`ll send invitation via email");
     handleCloseModal();
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Escape") {
-      handleCloseModal();
-    }
   };
 
   return (

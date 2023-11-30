@@ -28,19 +28,37 @@ const PsychologistCard = ({
   const [isFavorite, setIsFavorite] = useState(false);
 
   const user = auth.currentUser;
-
+  // if (user) {
   const favoritesRef = ref(db, `users/${user.uid}/favorites`);
+  // }
 
   useEffect(() => {
     if (user) {
       get(child(favoritesRef, id)).then((snapshot) => {
         setIsFavorite(snapshot.exists());
       });
+    } else {
+      return toast.warning("sorry, this is for authorized only");
     }
   }, []);
   const addFavorite = () => {
     if (user) {
-      set(child(favoritesRef, id), true).then(() => {
+      // Assuming you have the psychologist details available
+      const psychologistDetails = {
+        name,
+        avatar_url,
+        experience,
+        price_per_hour,
+        rating,
+        license,
+        specialization,
+        initial_consultation,
+        about,
+        reviews,
+        id,
+      };
+
+      set(child(favoritesRef, id), psychologistDetails).then(() => {
         setIsFavorite(true);
       });
     } else {
@@ -49,20 +67,13 @@ const PsychologistCard = ({
   };
   const removeFavorite = () => {
     if (user) {
-      get(child(favoritesRef, id)).then((snapshot) => {
-        if (snapshot.exists()) {
-          remove(child(favoritesRef, id)).then(() => {
-            setIsFavorite(false);
-          });
-        } else {
-          console.log("Psychologist not found in favorites");
-        }
+      remove(child(favoritesRef, id)).then(() => {
+        setIsFavorite(false);
       });
     } else {
       toast.warning("Please log in");
     }
   };
-
   return (
     <li className={styles.psychologistCardWrapper}>
       <div className={styles.mainInfoWrapper}>
