@@ -76,7 +76,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 190px;
 }
 
 /* Media Queries for Tablet */
@@ -95,10 +94,6 @@
 
   .modal input {
     max-width: 100%;
-  }
-
-  .modal button {
-    padding: 16px 20px;
   }
 }
 
@@ -120,10 +115,6 @@
     height: 40px;
     padding-left: 12px;
   }
-
-  .modal button {
-    padding: 12px;
-  }
 }
 
 .closeButton {
@@ -131,11 +122,8 @@
   display: block;
   position: absolute;
   padding: 0;
-  top: 10px;
-  right: -150px;
-  @media screen and (max-width: 768px) {
-    right: 10px;
-  }
+  top: 24px;
+  right: 24px;
 }
 
 .psychologistResume {
@@ -144,5 +132,30 @@
   margin-right: auto;
   & img {
     border-radius: 10px;
+  }
+}
+.passwordInputWrapper {
+  position: relative;
+}
+.passwordInput {
+  width: 96%;
+}
+.togglePassword {
+  background-color: transparent;
+  display: block;
+  position: absolute;
+  top: 28%;
+  right: 1%;
+  width: 40px;
+  @media screen and (max-width: 768px) {
+    right: 1%;
+  }
+}
+
+.submitBtn {
+  padding: 16px 190px;
+
+  @media screen and (max-width: 768px) {
+    padding: 12px;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./Modal.module.scss";
@@ -11,8 +11,10 @@ import { app } from "../../firebase";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { closeModalSignup } from "../../helpers/redux/modal/modalSlice";
+import sprite from "../../assets/sprite.svg";
 
 const ModalSignup = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -22,7 +24,7 @@ const ModalSignup = () => {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === "Escape") {
-        handleCloseModal();
+        handleClose();
       }
     };
     document.addEventListener("keydown", handleKeyPress);
@@ -57,7 +59,7 @@ const ModalSignup = () => {
         tabIndex="0"
       >
         <div className="modalText">
-          <button className={styles.closeButton} onClick={handleCloseModal}>
+          <button className={styles.closeButton} onClick={handleClose}>
             X
           </button>
           <h2>Register</h2>
@@ -89,10 +91,38 @@ const ModalSignup = () => {
             <Field type="email" placeholder="Email" name="email" />
             <ErrorMessage name="email" component="div" className="error" />
 
-            <Field type="password" placeholder="Password" name="password" />
+            <div className={styles.passwordInputWrapper}>
+              <Field
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                name="password"
+                className={styles.passwordInput}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className={styles.togglePassword}
+              >
+                <svg
+                  width={20}
+                  height={20}
+                  stroke="#000"
+                  fill="transparent"
+                  viewBox="0 0 24 24"
+                >
+                  <use
+                    href={
+                      showPassword
+                        ? `${sprite}#icon-showpassword`
+                        : `${sprite}#icon-hidepassword`
+                    }
+                  ></use>
+                </svg>
+              </button>
+            </div>
             <ErrorMessage name="password" component="div" className="error" />
 
-            <button type="submit">Sign Up</button>
+            <button type="submit" className={styles.submitBtn}>Sign Up</button>
           </Form>
         </Formik>
       </div>

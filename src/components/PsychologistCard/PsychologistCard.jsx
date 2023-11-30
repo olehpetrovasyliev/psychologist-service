@@ -31,17 +31,15 @@ const PsychologistCard = ({
   const [isFavorite, setIsFavorite] = useState(false);
 
   const user = auth.currentUser;
-  // if (user) {
-  const favoritesRef = ref(db, `users/${user.uid}/favorites`);
-  // }
+
+  const favoritesRef = ref(db, `users/${user?.uid}/favorites`);
+
   const isModalAppointmentOpen = useSelector(selectIsModalAppointmentOpen);
   useEffect(() => {
     if (user) {
       get(child(favoritesRef, id)).then((snapshot) => {
         setIsFavorite(snapshot.exists());
       });
-    } else {
-      return toast.warning("sorry, this is for authorized only");
     }
   }, []);
   const addFavorite = () => {
