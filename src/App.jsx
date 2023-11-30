@@ -32,7 +32,11 @@ function App() {
       </Routes>
       {isModalSignupOpen && createPortal(<ModalSignup />, document.body)}
       {isModalLoginOpen && createPortal(<ModalLogin />, document.body)}
-      {isModalAppointmentOpen && createPortal(<ModalEnroll />, document.body)}
+      {/* {isModalAppointmentOpen &&
+        createPortal(
+          <ModalEnroll psychologist={{ avatar_url: "", name: "" }} />,
+          document.body
+        )} */}
 
       <ToastContainer autoClose={1000} />
     </>

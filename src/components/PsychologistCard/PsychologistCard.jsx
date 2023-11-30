@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import svg from "../../assets/sprite.svg";
 import styles from "./psychologistCard.module.scss";
 import humanPlaceholder from "../../assets/images/human-placeholder.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModalAppointment } from "../../helpers/redux/modal/modalSlice";
 import { auth, db } from "../../firebase";
 import { toast } from "react-toastify";
 import { child, get, ref, set, remove } from "firebase/database";
+import { createPortal } from "react-dom";
+import { selectIsModalAppointmentOpen } from "../../helpers/redux/modal/modalSelectors";
+import ModalEnroll from "../Modal/modalEnroll";
 
 const PsychologistCard = ({
   name,
@@ -31,7 +34,7 @@ const PsychologistCard = ({
   // if (user) {
   const favoritesRef = ref(db, `users/${user.uid}/favorites`);
   // }
-
+  const isModalAppointmentOpen = useSelector(selectIsModalAppointmentOpen);
   useEffect(() => {
     if (user) {
       get(child(favoritesRef, id)).then((snapshot) => {
@@ -172,6 +175,11 @@ const PsychologistCard = ({
               >
                 Make an appointment
               </button>
+              {isModalAppointmentOpen &&
+                createPortal(
+                  <ModalEnroll psychologist={{ avatar_url, name }} />, // Pass the required data here
+                  document.body
+                )}
             </ul>
           )}
         </div>

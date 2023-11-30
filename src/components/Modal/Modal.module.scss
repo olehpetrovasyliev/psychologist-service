@@ -137,3 +137,12 @@
     right: 10px;
   }
 }
+
+.psychologistResume {
+  display: flex;
+  gap: 14px;
+  margin-right: auto;
+  & img {
+    border-radius: 10px;
+  }
+}

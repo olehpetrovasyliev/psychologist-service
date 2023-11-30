@@ -56,11 +56,19 @@ const ModalSignup = ({ psychologist }) => {
             for your privacy.
           </p>
         </div>
-        {/* <div>
-          <img src={psychologist.avatar_url} alt="photo" />
-          <p>Your psychologists</p>
-          <h3>{psychologist.name}</h3>
-        </div> */}
+        <div className={styles.psychologistResume}>
+          <img
+            src={psychologist.avatar_url}
+            alt="photo"
+            width={44}
+            height={44}
+          />
+          <div>
+            {" "}
+            <p>Your psychologists</p>
+            <h3>{psychologist.name}</h3>
+          </div>
+        </div>
         <Formik
           initialValues={{
             name: "",
