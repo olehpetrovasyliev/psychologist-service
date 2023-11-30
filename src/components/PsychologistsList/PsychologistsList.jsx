@@ -107,7 +107,7 @@ const PsychologistsList = ({ arr }) => {
             />
           ))}
       </ul>
-      {visiblePsychologists < filteredArr.length && (
+      {visiblePsychologists < filteredArr().length && (
         <button onClick={() => handleLoadMore()} className={styles.loadMore}>
           Load More
         </button>
