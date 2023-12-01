@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import PsychologistsList from "../../components/PsychologistsList/PsychologistsList";
 import { child, get, onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
-import { useDispatch } from "react-redux";
+import styles from "./Favorites.module.scss";
 
 const MyFavorites = () => {
   const [favoritePsychologists, setFavoritePsychologists] = useState([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const { currentUser } = auth;
@@ -39,7 +38,9 @@ const MyFavorites = () => {
       {favoritePsychologists.length ? (
         <PsychologistsList arr={favoritePsychologists} />
       ) : (
-        <p>You don`t have favoritew psychologists yet</p>
+        <div className={styles.placeholder}>
+          <p>You don`t have favorite psychologists yet</p>
+        </div>
       )}
     </main>
   );
