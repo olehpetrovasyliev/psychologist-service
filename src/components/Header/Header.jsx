@@ -28,6 +28,14 @@ const Header = () => {
   };
 
   const dispatch = useDispatch();
+  const openLoginModal = () => {
+    document.body.classList.add("modal-open");
+    dispatch(openModalLogin());
+  };
+  const openSignupModal = () => {
+    document.body.classList.add("modal-open");
+    dispatch(openModalSignup());
+  };
   return (
     <>
       <header className={styles.header}>
@@ -66,16 +74,10 @@ const Header = () => {
             </div>
           ) : (
             <>
-              <button
-                className={styles.login}
-                onClick={() => dispatch(openModalLogin())}
-              >
+              <button className={styles.login} onClick={openLoginModal}>
                 Log In
               </button>
-              <button
-                className={styles.signup}
-                onClick={() => dispatch(openModalSignup())}
-              >
+              <button className={styles.signup} onClick={openSignupModal}>
                 Sign Up
               </button>{" "}
             </>

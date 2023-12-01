@@ -74,6 +74,10 @@ const PsychologistCard = ({
       toast.warning("Please log in");
     }
   };
+  const openModal = () => {
+    document.body.classList.add("modal-open");
+    dispatch(openModalAppointment());
+  };
   return (
     <li className={styles.psychologistCardWrapper}>
       <div className={styles.mainInfoWrapper}>
@@ -166,10 +170,7 @@ const PsychologistCard = ({
                   <p className={styles.comment}>{r.comment}</p>
                 </li>
               ))}
-              <button
-                className={styles.enrollBtn}
-                onClick={() => dispatch(openModalAppointment())}
-              >
+              <button className={styles.enrollBtn} onClick={openModal}>
                 Make an appointment
               </button>
               {isModalAppointmentOpen &&
