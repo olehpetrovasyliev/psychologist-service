@@ -1,0 +1,62 @@
+.brgrWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.brgrNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brgrNavLink {
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: #000;
+  text-decoration: none;
+  &:hover {
+    color: #fc832c;
+  }
+}
+
+.profileInfoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  color: rgba(25, 26, 21, 0.9);
+  padding: 4px 12px;
+}
+
+.loginBtn {
+  background: transparent;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  color: rgba(25, 26, 21, 0.9);
+  padding: 4px 12px;
+}
+.brgrSingup {
+  padding: 4px 12px;
+}
+
+.authWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.closBtn {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+}

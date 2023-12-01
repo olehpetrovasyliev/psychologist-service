@@ -30,7 +30,7 @@ const modalSlice = createSlice({
       state.isModalAppointmentOpen = false;
     },
     openBurgerMenu(state) {
-      state.iBurgerMenuOpen = true;
+      state.isBurgerMenuOpen = true;
     },
     closeBurgerMenu(state) {
       state.isBurgerMenuOpen = false;
@@ -46,4 +46,6 @@ export const {
   closeModalLogin,
   openModalAppointment,
   closeModalAppointment,
+  openBurgerMenu,
+  closeBurgerMenu,
 } = modalSlice.actions;
