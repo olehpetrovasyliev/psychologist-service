@@ -6,7 +6,6 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
   text-decoration: inherit;
 }
 
@@ -38,7 +37,7 @@ p {
   margin-top: 0;
 }
 
-.active {
+a.active {
   color: #fc832c;
   text-decoration: underline;
   position: relative;

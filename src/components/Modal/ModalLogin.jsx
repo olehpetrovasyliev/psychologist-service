@@ -26,17 +26,17 @@ const ModalLogin = () => {
     }
   };
 
-  const handleCloseModal = () => {
+  function handleCloseModal() {
     dispatch(closeModalLogin());
-  };
+  }
 
   const handleSubmit = async (values) => {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
-      handleClose();
+      handleCloseModal();
       toast.success("Login successful");
     } catch (error) {
-      toast.error("Invalid credentials. Please try again.");
+      console.log(error);
     }
   };
 

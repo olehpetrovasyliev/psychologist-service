@@ -98,7 +98,9 @@ const ModalSignup = ({ psychologist }) => {
             <ErrorMessage name="email" component="div" className="error" />
             <Field type="textarea" placeholder="Comment" name="comment" />
 
-            <button type="submit">Sign Up</button>
+            <button type="submit" className={styles.submitBtn}>
+              Sign Up
+            </button>
           </Form>
         </Formik>
       </div>

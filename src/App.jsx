@@ -61,6 +61,7 @@ function App() {
         </Route>
       </Routes>
       {isModalSignupOpen && createPortal(<ModalSignup />, document.body)}
+      {isModalLoginOpen && createPortal(<ModalLogin />, document.body)}
       <ToastContainer autoClose={1000} />
     </>
   );
