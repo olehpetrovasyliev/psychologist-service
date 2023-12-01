@@ -27,17 +27,17 @@ const PsychologistsList = ({ arr }) => {
   const filteredArr = () => {
     switch (selectedOption.value) {
       case "a-z":
-        return arr.slice().sort((a, b) => a.name.localeCompare(b.name));
+        return [...arr].sort((a, b) => a.name.localeCompare(b.name));
       case "z-a":
         return arr.slice().sort((a, b) => b.name.localeCompare(a.name));
       case "less10":
-        return arr.filter((el) => el.price_per_hour < 10);
+        return [...arr].filter((el) => el.price_per_hour < 10);
       case "more10":
         return arr.filter((el) => el.price_per_hour >= 10);
       case "popular":
-        return arr.filter((el) => el.rating >= 4.8);
+        return [...arr].sort((a, b) => b.rating - a.rating);
       case "nonpopular":
-        return arr.filter((el) => el.rating < 4.8);
+        return [...arr].sort((a, b) => a.rating - b.rating);
 
       default:
         return arr;
