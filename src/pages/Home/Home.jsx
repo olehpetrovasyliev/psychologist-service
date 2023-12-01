@@ -60,7 +60,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* <PsychologistsList /> */}
     </main>
   );
 };

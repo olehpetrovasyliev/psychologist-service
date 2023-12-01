@@ -44,7 +44,6 @@ const PsychologistCard = ({
   }, []);
   const addFavorite = () => {
     if (user) {
-      // Assuming you have the psychologist details available
       const psychologistDetails = {
         name,
         avatar_url,
