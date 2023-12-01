@@ -4,6 +4,7 @@ const initialState = {
   isModalSignupOpen: false,
   isModalLoginOpen: false,
   isModalAppointmentOpen: false,
+  isBurgerMenuOpen: false,
 };
 
 const modalSlice = createSlice({
@@ -27,6 +28,12 @@ const modalSlice = createSlice({
     },
     closeModalAppointment(state) {
       state.isModalAppointmentOpen = false;
+    },
+    openBurgerMenu(state) {
+      state.iBurgerMenuOpen = true;
+    },
+    closeBurgerMenu(state) {
+      state.isBurgerMenuOpen = false;
     },
   },
 });

@@ -19,6 +19,7 @@ const ModalSignup = () => {
 
   const handleClose = () => {
     dispatch(closeModalSignup());
+    document.body.classList.remove("modal-open");
   };
 
   useEffect(() => {

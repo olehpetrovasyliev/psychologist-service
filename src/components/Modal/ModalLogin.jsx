@@ -28,6 +28,7 @@ const ModalLogin = () => {
 
   function handleCloseModal() {
     dispatch(closeModalLogin());
+    document.body.classList.remove("modal-open");
   }
 
   const handleSubmit = async (values) => {

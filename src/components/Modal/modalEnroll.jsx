@@ -31,6 +31,7 @@ const ModalSignup = ({ psychologist }) => {
 
   const handleCloseModal = () => {
     dispatch(closeModalAppointment());
+    document.body.classList.remove("modal-open");
   };
   const handleSubmit = () => {
     toast.success("Thank you, we`ll send invitation via email");
@@ -88,7 +89,7 @@ const ModalSignup = ({ psychologist }) => {
           })}
           onSubmit={handleSubmit}
         >
-          <Form className="modalForm">
+          <Form className={styles.enrollForm}>
             <Field type="text" placeholder="Name" name="name" />
             <ErrorMessage name="name" component="div" className="error" />
             <Field type="tel" placeholder="Phone" name="phone" />
