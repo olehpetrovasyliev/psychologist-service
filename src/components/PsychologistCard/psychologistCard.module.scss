@@ -185,14 +185,6 @@
   position: relative;
   border-radius: 30px;
   border: 2px solid rgba(252, 131, 44, 0.2);
-
-  @media (max-width: 375px) {
-    height: 80px;
-  }
-
-  @media (max-width: 320px) {
-    height: 60px;
-  }
 }
 
 .psychologistCardWrapper {
